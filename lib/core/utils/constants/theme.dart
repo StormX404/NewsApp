@@ -3,7 +3,7 @@ import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/text_theme.dart';
 
 class AppTheme {
-    AppTheme._();
+  AppTheme._();
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
@@ -11,14 +11,19 @@ class AppTheme {
     brightness: Brightness.light,
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.light,
-    textTheme: AppTextTheme.lightTextTheme
+    textTheme: AppTextTheme.lightTextTheme,
+    splashFactory: NoSplash.splashFactory,
+    highlightColor: Colors.transparent,
   );
-   static ThemeData darkTheme = ThemeData(
+
+  static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
     primaryColor: AppColors.primary,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.dark,
-    textTheme: AppTextTheme.darkTextTheme
+    textTheme: AppTextTheme.darkTextTheme,
+    splashFactory: NoSplash.splashFactory,
+    highlightColor: Colors.transparent,
   );
 }
