@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/utils/constants/sizes.dart';
 import 'package:news_app/core/widgets/category/category.dart';
 import 'package:news_app/core/widgets/news_cards/news_tile_list_view.dart';
 import 'package:news_app/core/widgets/texts/section_heading.dart';
@@ -18,16 +19,30 @@ class HomeScreen extends StatelessWidget {
         child: CustomScrollView(
           physics: BouncingScrollPhysics(),
           slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: 20)),
+
+            // Spacing
+            SliverToBoxAdapter(child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
+
+            // Hottest News Section Heading
             SliverToBoxAdapter(child: SectionHeading(title: 'Hottest News')),
+
+            // Hottest News ListView
             SliverToBoxAdapter(
               child: HottestCardListView(),
             ),
+
+            // Latest News Section Heading
             SliverToBoxAdapter(child: SectionHeading(title: 'Latest News')),
+
+            // Categories ListView
             SliverToBoxAdapter(
               child: CategoryListView(),
             ),
-            SliverToBoxAdapter(child: SizedBox(height: 20)),
+            
+            // Spacing
+            SliverToBoxAdapter(child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
+
+            // News Tile ListView
             NewsTileListView(),
           ],
         ),

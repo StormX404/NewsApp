@@ -17,13 +17,9 @@ class CustomSearchContainer extends StatelessWidget {
       decoration: InputDecoration(
         hintText: 'Search...',
         prefixIcon: const Icon(Icons.search),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100),
-          borderSide: BorderSide(color: outlineInputBorder),
-        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(100),
-          borderSide: BorderSide(color: outlineInputBorder),
+          borderSide: const BorderSide(color: Colors.grey),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(100),
