@@ -1,6 +1,4 @@
-
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -24,64 +22,73 @@ class NavigationCubit extends Cubit<int> {
 }
 
 class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({super.key});
+  const NavigationMenu({super.key, this.index = 0});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<NavigationCubit, int>(
+    return BlocProvider(
+      create: (context) => NavigationCubit()..emit(index), // Initialize index
+      child: BlocBuilder<NavigationCubit, int>(
         builder: (context, state) {
-          return context.read<NavigationCubit>().screens[state];
-        },
-      ),
-      bottomNavigationBar: Stack(
-        children: [
-          ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-              child: Container(
-                height: 80,
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: Colors.grey.withOpacity(0.3)),
+          return WillPopScope(
+            onWillPop: () async {
+              if (state != 0) {
+                context.read<NavigationCubit>().changeTab(0);
+                return false; 
+              }
+              return true; 
+            },
+            child: Scaffold(
+              body: context.read<NavigationCubit>().screens[state],
+              bottomNavigationBar: Stack(
+                children: [
+                  ClipRRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                      child: Container(
+                        height: 80,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: Colors.grey.withOpacity(0.3)),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 80,
+                    child: BottomNavigationBar(
+                      currentIndex: state,
+                      onTap: (index) =>
+                          context.read<NavigationCubit>().changeTab(index),
+                      backgroundColor: Colors.transparent,
+                      selectedItemColor: AppColors.primary,
+                      unselectedItemColor: Colors.grey,
+                      type: BottomNavigationBarType.fixed,
+                      showUnselectedLabels: false,
+                      elevation: 0,
+                      items: const [
+                        BottomNavigationBarItem(
+                          icon: Icon(Iconsax.home),
+                          label: 'Home',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Iconsax.search_normal),
+                          label: 'Search',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Iconsax.heart),
+                          label: 'Favorite',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 80,
-            child: BlocBuilder<NavigationCubit, int>(
-              builder: (context, state) {
-                return BottomNavigationBar(
-                  currentIndex: state,
-                  onTap: (index) =>
-                      context.read<NavigationCubit>().changeTab(index),
-                  backgroundColor: Colors.transparent,
-                  selectedItemColor: AppColors.primary,
-                  unselectedItemColor: Colors.grey,
-                  type: BottomNavigationBarType.fixed,
-                  showUnselectedLabels: false,
-                  elevation: 0,
-                  items: const [
-                    BottomNavigationBarItem(
-                      icon: Icon(Iconsax.home),
-                      label: 'Home',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Iconsax.search_normal),
-                      label: 'Search',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Iconsax.heart),
-                      label: 'Favorite',
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/image_strings.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
+import 'package:news_app/navigation_menu.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
@@ -18,7 +19,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           bottom: BorderSide(color: Colors.grey.withOpacity(0.3)),
         ),
       ),
-
       child: AppBar(
         flexibleSpace: ClipRect(
           child: BackdropFilter(
@@ -36,7 +36,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NavigationMenu(index: 1)),
+              );
+            },
             icon: Icon(Iconsax.search_normal_1,
                 color: dark ? AppColors.light.withOpacity(.6) : AppColors.dark),
           ),
