@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -34,11 +36,16 @@ class NavigationMenu extends StatelessWidget {
       ),
       bottomNavigationBar: Stack(
         children: [
-          Container(
-            height: 80,
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(color: Colors.grey.withOpacity(0.3)),
+          ClipRRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+              child: Container(
+                height: 80,
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(color: Colors.grey.withOpacity(0.3)),
+                  ),
+                ),
               ),
             ),
           ),

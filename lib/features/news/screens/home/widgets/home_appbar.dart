@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/image_strings.dart';
-import 'package:news_app/core/utils/constants/sizes.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,19 +12,22 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Colors.grey.withOpacity(0.3)),
+        ),
+      ),
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSizes.xs),
       child: AppBar(
-        backgroundColor: dark
-            ? AppColors.dark.withAlpha(200)
-            : AppColors.light.withAlpha(200),
         flexibleSpace: ClipRect(
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+            filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
             child: Container(color: Colors.transparent),
           ),
         ),
+        backgroundColor: dark ? AppColors.dark : AppColors.light,
+        elevation: 0,
         automaticallyImplyLeading: false,
         title: const Row(
           children: [
@@ -35,14 +37,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Iconsax.search_normal_1),
+            icon: Icon(Iconsax.search_normal_1,
+                color: dark ? AppColors.light.withOpacity(.6) : AppColors.dark),
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Iconsax.moon),
+            icon: Icon(Iconsax.moon,
+                color: dark ? AppColors.light.withOpacity(.6) : AppColors.dark),
           ),
         ],
-      
         toolbarHeight: preferredSize.height,
       ),
     );
