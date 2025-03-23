@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/image_strings.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
+import 'package:news_app/features/news/cubits/theme_cubit/theme_cubit.dart';
 import 'package:news_app/navigation_menu.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -12,7 +14,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = Theme.of(context).brightness == Brightness.dark;
+    final dark = Theme
+        .of(context)
+        .brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -47,9 +51,20 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 color: dark ? AppColors.light.withOpacity(.6) : AppColors.dark),
           ),
           IconButton(
-            onPressed: () {},
-            icon: Icon(Iconsax.moon,
-                color: dark ? AppColors.light.withOpacity(.6) : AppColors.dark),
+            onPressed: () {
+              context.read<ThemeCubit>().toggleTheme();
+            },
+            icon: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500),
+              transitionBuilder: (child, animation) => RotationTransition(
+                turns: Tween<double>(begin: 0.5, end: 1).animate(animation),
+                child: child,
+              ),
+              child: Icon(
+                context.watch<ThemeCubit>().state == ThemeMode.dark ? Iconsax.moon4 : Iconsax.sun_1,
+                key: ValueKey(context.watch<ThemeCubit>().state),
+              ),
+            ),
           ),
         ],
         toolbarHeight: preferredSize.height,

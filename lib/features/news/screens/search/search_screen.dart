@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
 import 'package:news_app/core/widgets/appbar/appbar.dart';
 import 'package:news_app/core/widgets/custom_shapes/containers/custom_search_container.dart';

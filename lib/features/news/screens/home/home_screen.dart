@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/sizes.dart';
-import 'package:news_app/core/widgets/category/category.dart';
 import 'package:news_app/core/widgets/news_cards/news_tile_list_view.dart';
 import 'package:news_app/core/widgets/texts/section_heading.dart';
 import 'package:news_app/features/news/screens/home/widgets/category_list_view.dart';
