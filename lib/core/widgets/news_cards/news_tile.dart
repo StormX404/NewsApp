@@ -26,7 +26,7 @@ class NewsTile extends StatelessWidget {
     return InkWell(
       onTap: ontap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 15),
+        margin: const EdgeInsets.only(bottom: 15 , right: 15 ),
         decoration: BoxDecoration(
             color: dark ? AppColors.darkCardColor : AppColors.lightCardColor,
             borderRadius: BorderRadius.circular(20)),

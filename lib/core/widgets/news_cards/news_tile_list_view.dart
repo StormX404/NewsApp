@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/widgets/news_cards/news_tile.dart';
+import 'package:news_app/features/news/screens/details/details_screen.dart';
 
 class NewsTileListView extends StatelessWidget {
   const NewsTileListView({
@@ -16,7 +17,7 @@ class NewsTileListView extends StatelessWidget {
             time: '2025-02-27T19:05:24Z',
             title: 'Musk and Trump’s Fort Knox Trip Is About Bitcoin',
             author: 'Matthew Gault',
-            ontap: () {  },
+            ontap: () => Navigator.push(context, MaterialPageRoute(builder: (context )=> const DetailsScreen())),
           );
         },
         childCount: 4,

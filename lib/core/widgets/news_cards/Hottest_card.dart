@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
-import 'package:news_app/core/widgets/icon/favourite_icon.dart';
+import 'package:news_app/core/widgets/icon/favorite_icon.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class HottestCard extends StatelessWidget {
@@ -65,7 +65,7 @@ class HottestCard extends StatelessWidget {
           const Positioned(
             top: 12,
             right: 15,
-            child: FavouriteIcon(),
+            child: FavoriteIcon(),
           ),
           Positioned(
             bottom: 20,

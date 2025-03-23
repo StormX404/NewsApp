@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/sizes.dart';
 import 'package:news_app/core/widgets/category/category.dart';
 import 'package:news_app/core/widgets/news_cards/news_tile_list_view.dart';
@@ -12,47 +14,54 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: HomeAppBar(),
+    return Scaffold(
+      appBar: const HomeAppBar(),
       body: Padding(
-        padding: EdgeInsets.only(left: 15.0),
+        padding: const EdgeInsets.only(left: 15.0),
         child: CustomScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: [
-
             // Spacing
-            SliverToBoxAdapter(child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
+            const SliverToBoxAdapter(
+                child: SizedBox(height: AppSizes.spaceBtwSections)),
 
             // Hottest News Section Heading
-            SliverToBoxAdapter(child: SectionHeading(title: 'Hottest News')),
+            const SliverToBoxAdapter(
+                child: SectionHeading(title: 'Hottest News')),
 
             // Hottest News ListView
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: HottestCardListView(),
             ),
 
             // Latest News Section Heading
-            SliverToBoxAdapter(child: SectionHeading(title: 'Latest News')),
+            SliverToBoxAdapter(
+                child: SectionHeading(
+              title: 'Latest News',
+              icon: TextButton(
+                onPressed: () {},
+                child: const Icon(
+                  Iconsax.arrow_right_2,
+                  size: AppSizes.iconMd,
+                  color: AppColors.primary,
+                ),
+              ),
+            )),
 
             // Categories ListView
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: CategoryListView(),
             ),
-            
+
             // Spacing
-            SliverToBoxAdapter(child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
+            const SliverToBoxAdapter(
+                child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
 
             // News Tile ListView
-            NewsTileListView(),
+            const NewsTileListView(),
           ],
         ),
       ),
     );
   }
 }
-
-
-
-
-
-

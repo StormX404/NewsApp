@@ -3,8 +3,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/widgets/icon/circular_icon.dart';
 
-class FavouriteIcon extends StatelessWidget {
-  const FavouriteIcon({super.key});
+class FavoriteIcon extends StatelessWidget {
+  const FavoriteIcon({super.key});
 
 
   @override
