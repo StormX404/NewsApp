@@ -12,6 +12,8 @@ import 'package:news_app/features/news/data/data_sources/home_remote_data_source
 import 'package:news_app/features/news/data/repos/news_repo_impl.dart';
 import 'package:news_app/features/news/domain/entities/news_entity.dart';
 import 'package:news_app/features/news/domain/use_cases/fetch_all_news_use_case.dart';
+import 'package:news_app/features/news/domain/use_cases/speak_use_case.dart';
+import 'package:news_app/features/news/domain/use_cases/stop_use_case.dart';
 import 'package:news_app/features/news/screens/cubits/all_news_cubit/all_news_cubit.dart';
 import 'package:news_app/features/onboarding/onboarding_screen.dart';
 import 'package:news_app/navigation_menu.dart';
@@ -40,12 +42,14 @@ void main() async {
   );
 
   final fetchAllNewsUseCase = FetchAllNewsUseCase(newsRepo);
+  final speakUseCase = SpeakUseCase(newsRepo);
+  final stopUseCase = StopUseCase(newsRepo);
 
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
-        BlocProvider(create: (_) => AllNewsCubit(fetchAllNewsUseCase)..fetchAllNews()),
+        BlocProvider(create: (_) => AllNewsCubit(fetchAllNewsUseCase , speakUseCase , stopUseCase)..fetchAllNews()),
       ],
       child: const NewsApp(),
     ),

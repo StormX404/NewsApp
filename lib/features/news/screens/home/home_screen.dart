@@ -6,7 +6,6 @@ import 'package:news_app/core/widgets/news_cards/news_tile_list_view.dart';
 import 'package:news_app/core/widgets/texts/section_heading.dart';
 import 'package:news_app/features/news/screens/home/widgets/category_list_view.dart';
 import 'package:news_app/features/news/screens/home/widgets/home_appbar.dart';
-import 'package:news_app/features/news/screens/home/widgets/hottest_card_list_view.dart';
 import 'package:news_app/features/news/screens/home/widgets/hottest_card_list_view_bloc_builder.dart';
 
 class HomeScreen extends StatelessWidget {

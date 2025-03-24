@@ -4,7 +4,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/widgets/icon/circular_icon.dart';
 import 'package:news_app/core/widgets/icon/favorite_icon.dart';
-import 'package:news_app/features/news/domain/entities/news_entity.dart';
 
 class RoundedImageWithTopBar extends StatelessWidget {
   const RoundedImageWithTopBar({

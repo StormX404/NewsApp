@@ -5,7 +5,6 @@ import 'package:news_app/core/utils/device/device_utility.dart';
 import 'package:news_app/core/widgets/custom_shapes/containers/play_sound_container.dart';
 import 'package:news_app/core/widgets/icon/circular_icon.dart';
 import 'package:news_app/core/widgets/texts/section_heading.dart';
-import 'package:news_app/features/news/data/models/news_model.dart';
 import 'package:news_app/features/news/domain/entities/news_entity.dart';
 import 'package:news_app/features/news/screens/details/widget/rounded_image_with_top_bar.dart';
 
@@ -80,7 +79,7 @@ class DetailsScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: AppSizes.spaceBtwItems),
-                const PlaySoundContainer(),
+                 PlaySoundContainer(text: news.content,),
                 const SectionHeading(title: 'Content'),
                 Text(news.content,
                      style: Theme.of(context).textTheme.titleSmall),

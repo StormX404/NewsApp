@@ -7,7 +7,6 @@ import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/image_strings.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
 import 'package:news_app/core/app_manager/theme_cubit/theme_cubit.dart';
-import 'package:news_app/navigation_menu.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
