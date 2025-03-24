@@ -6,7 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/image_strings.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
-import 'package:news_app/features/news/cubits/theme_cubit/theme_cubit.dart';
+import 'package:news_app/core/app_manager/theme_cubit/theme_cubit.dart';
 import 'package:news_app/navigation_menu.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -39,7 +39,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ],
         ),
         actions: [
-          IconButton(
+          /*IconButton(
             onPressed: () {
               Navigator.push(
                 context,
@@ -49,19 +49,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             icon: Icon(Iconsax.search_normal_1,
                 color: dark ? AppColors.light.withOpacity(.6) : AppColors.dark),
-          ),
+          ),*/
           IconButton(
-            onPressed: () {
-              context.read<ThemeCubit>().toggleTheme();
-            },
+            onPressed: () {context.read<ThemeCubit>().toggleTheme();},
             icon: AnimatedSwitcher(
               duration: const Duration(milliseconds: 500),
               transitionBuilder: (child, animation) => RotationTransition(
                 turns: Tween<double>(begin: 0.5, end: 1).animate(animation),
                 child: child,
               ),
-              child: Icon(
-                context.watch<ThemeCubit>().state == ThemeMode.dark ? Iconsax.moon4 : Iconsax.sun_1,
+              child: Icon(context.watch<ThemeCubit>().state == ThemeMode.dark ? Iconsax.moon4 : Iconsax.sun_1,
                 key: ValueKey(context.watch<ThemeCubit>().state),
               ),
             ),

@@ -1,15 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/widgets/icon/circular_icon.dart';
 import 'package:news_app/core/widgets/icon/favorite_icon.dart';
+import 'package:news_app/features/news/domain/entities/news_entity.dart';
 
 class RoundedImageWithTopBar extends StatelessWidget {
   const RoundedImageWithTopBar({
     super.key,
     required this.borderRadius,
-    required this.screenHeight,
+    required this.screenHeight, required this.image,
   });
+
+  final String image;
+
 
   final BorderRadius borderRadius;
   final double screenHeight;
@@ -20,8 +25,8 @@ class RoundedImageWithTopBar extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: borderRadius,
-          child: Image.asset(
-            'assets/images/test_photo.jpg',
+          child: CachedNetworkImage(
+            imageUrl: image,
             height: screenHeight * 0.5,
             width: double.infinity,
             fit: BoxFit.cover,

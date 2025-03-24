@@ -17,7 +17,7 @@ class NewsTileListView extends StatelessWidget {
             time: '2025-02-27T19:05:24Z',
             title: 'Musk and Trump’s Fort Knox Trip Is About Bitcoin',
             author: 'Matthew Gault',
-            ontap: () => Navigator.push(context, MaterialPageRoute(builder: (context )=> const DetailsScreen())),
+            ontap: () {},
           );
         },
         childCount: 4,

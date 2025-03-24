@@ -13,7 +13,7 @@ class FavoriteIcon extends StatelessWidget {
       width: 40,
       height: 40,
       icon: Iconsax.heart5,
-      color:  AppColors.error,
+      color:  AppColors.white,
       onPressed: () {},
     );
   }

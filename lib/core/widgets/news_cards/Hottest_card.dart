@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
 import 'package:news_app/core/widgets/icon/favorite_icon.dart';
@@ -37,13 +38,10 @@ class HottestCard extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                imageUrl,
+              child: CachedNetworkImage(
+                imageUrl : imageUrl,
                 fit: BoxFit.cover,
                 width: double.infinity,
-                errorBuilder: (context, error, stackTrace) => const Center(
-                  child: Icon(Icons.broken_image, size: 50, color: Colors.grey),
-                ),
               ),
             ),
           ),

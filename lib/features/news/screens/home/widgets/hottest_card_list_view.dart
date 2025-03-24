@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/widgets/news_cards/Hottest_card.dart';
+import 'package:news_app/core/widgets/news_cards/hottest_card.dart';
+import 'package:news_app/features/news/domain/entities/news_entity.dart';
+import 'package:news_app/features/news/screens/details/details_screen.dart';
 
 class HottestCardListView extends StatelessWidget {
-  const HottestCardListView({
-    super.key,
-  });
+  const HottestCardListView({super.key, required this.news});
+
+  final List<NewsEntity> news;
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +14,19 @@ class HottestCardListView extends StatelessWidget {
       height: 250,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 4,
+        itemCount: news.length,
         itemBuilder: (context, index) {
+          final newsItem = news[index];
+
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: HottestCard(
-              imageUrl: 'assets/images/test_photo.jpg',
-              time: '2025-02-27T19:05:24Z',
-              title: 'Musk and Trump’s Fort Knox Trip Is About Bitcoin',
-              author: 'Matthew Gault',
-              onTap: () {},
+              imageUrl: newsItem.urlToImage?.isNotEmpty == true ? newsItem.urlToImage! : 'assets/images/placeholder.png',
+              time: newsItem.publishedAt ?? 'Unknown',
+              title: newsItem.title,
+              author: newsItem.author?.isNotEmpty == true ? newsItem.author! : 'Unknown',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context )=> DetailsScreen(news: newsItem,))),
+
             ),
           );
         },

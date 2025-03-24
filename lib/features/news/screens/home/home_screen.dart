@@ -7,6 +7,7 @@ import 'package:news_app/core/widgets/texts/section_heading.dart';
 import 'package:news_app/features/news/screens/home/widgets/category_list_view.dart';
 import 'package:news_app/features/news/screens/home/widgets/home_appbar.dart';
 import 'package:news_app/features/news/screens/home/widgets/hottest_card_list_view.dart';
+import 'package:news_app/features/news/screens/home/widgets/hottest_card_list_view_bloc_builder.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
 
             // Hottest News ListView
             const SliverToBoxAdapter(
-              child: HottestCardListView(),
+              child: HottestCardListViewBlocBuilder(),
             ),
 
             // Latest News Section Heading
