@@ -6,8 +6,8 @@ import 'package:news_app/core/errors/failure.dart';
 import 'package:news_app/core/use_cases/use_case.dart';
 
 class FetchAllNewsUseCase extends UseCase<List<NewsEntity>, int> {
-
   FetchAllNewsUseCase(this.newsRepo);
+
   final NewsRepo newsRepo;
 
   @override

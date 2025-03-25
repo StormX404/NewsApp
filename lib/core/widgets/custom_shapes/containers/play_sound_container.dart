@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
-import 'package:news_app/features/news/screens/cubits/all_news_cubit/all_news_cubit.dart';
+import 'package:news_app/features/news/screens/cubits/details_cubit/details_cubit.dart';
 
 class PlaySoundContainer extends StatelessWidget {
   const PlaySoundContainer({
@@ -13,9 +13,9 @@ final String text;
   @override
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
-    return BlocBuilder<AllNewsCubit, AllNewsState>(
+    return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
-        final isPlaying = state is AllNewsSpeaking;
+        final isPlaying = state is DetailsSpeaking;
         return Container(
           height: 55,
           decoration: BoxDecoration(
@@ -27,9 +27,9 @@ final String text;
               IconButton(
                 onPressed: () {
                   if (isPlaying) {
-                    context.read<AllNewsCubit>().stop();
+                    context.read<DetailsCubit>().stop();
                   } else {
-                    context.read<AllNewsCubit>().speak(text);
+                    context.read<DetailsCubit>().speak(text);
                   }
                 },
                 icon: Icon(isPlaying ? Iconsax.pause : Iconsax.play, size: 25),

@@ -16,6 +16,4 @@ final class AllNewsSuccess extends AllNewsState {
   final List<NewsEntity> news;
 }
 
-final class AllNewsSpeaking extends AllNewsState {}
 
-final class AllNewsStopped extends AllNewsState {}
