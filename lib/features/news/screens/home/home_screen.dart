@@ -19,55 +19,46 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final fetchAllNewsUseCase = getIt<FetchAllNewsUseCase>();
-
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return BlocProvider(
         create: (_) => AllNewsCubit(fetchAllNewsUseCase)..fetchAllNews(),
       child: Scaffold(
         appBar: const HomeAppBar(),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              // Spacing
-              const SliverToBoxAdapter(
-                  child: SizedBox(height: AppSizes.spaceBtwSections)),
+        body: RefreshIndicator(
+          color: AppColors.primary,
+          backgroundColor: dark ? AppColors.dark : AppColors.light,
+          elevation: 0,
+          displacement: 0,
+          onRefresh: () async {
+            await context.read<AllNewsCubit>().fetchAllNews();
+            },
+          child: const Padding(
+            padding: EdgeInsets.only(left: 15.0),
+            child: CustomScrollView(
+              physics: BouncingScrollPhysics(),
+              slivers: [
+                // Spacing
+                SliverToBoxAdapter(child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
 
-              // Hottest News Section Heading
-              const SliverToBoxAdapter(
-                  child: SectionHeading(title: 'Hottest News')),
+                // Hottest News Section Heading
+                SliverToBoxAdapter(child: SectionHeading(title: 'Hottest News')),
 
-              // Hottest News ListView
-              const SliverToBoxAdapter(
-                child: HottestCardListViewBlocBuilder(),
-              ),
+                // Hottest News ListView
+                SliverToBoxAdapter(child: HottestCardListViewBlocBuilder()),
 
-              // Latest News Section Heading
-              SliverToBoxAdapter(
-                  child: SectionHeading(
-                    title: 'Latest News',
-                    icon: TextButton(
-                      onPressed: () {},
-                      child: const Icon(
-                        Iconsax.arrow_right_2,
-                        size: AppSizes.iconMd,
-                        color: AppColors.primary,
-                      ),
-                    ),
-                  )),
+                // Latest News Section Heading
+                SliverToBoxAdapter(child: SectionHeading(title: 'Latest News',)),
 
-              // Categories ListView
-              const SliverToBoxAdapter(
-                child: CategoryListView(),
-              ),
+                // Categories ListView
+                SliverToBoxAdapter(child: CategoryListView(),),
 
-              // Spacing
-              const SliverToBoxAdapter(
-                  child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
+                // Spacing
+                SliverToBoxAdapter(child: SizedBox(height: AppSizes.spaceBtwItems + 5)),
 
-              // News Tile ListView
-              const NewsTileListView(),
-            ],
+                // News Tile ListView
+                NewsTileListView(),
+              ],
+            ),
           ),
         ),
       ),
