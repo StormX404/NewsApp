@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/widgets/icon/circular_icon.dart';
 import 'package:news_app/core/widgets/icon/favorite_icon.dart';
+import 'package:news_app/features/news/screens/cubits/details_cubit/details_cubit.dart';
 
 class RoundedImageWithTopBar extends StatelessWidget {
   const RoundedImageWithTopBar({
@@ -20,6 +22,7 @@ class RoundedImageWithTopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(
       children: [
         ClipRRect(
@@ -60,7 +63,10 @@ class RoundedImageWithTopBar extends StatelessWidget {
                 height: 40,
                 icon: Iconsax.arrow_left_2,
                 color: AppColors.white,
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  context.read<DetailsCubit>().stop();
+                  Navigator.pop(context);
+                }
               ),
               const FavoriteIcon(),
             ],
