@@ -10,8 +10,6 @@ class FavoriteIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircularIcon(
-      width: 40,
-      height: 40,
       icon: Iconsax.heart5,
       color:  AppColors.white,
       onPressed: () {},

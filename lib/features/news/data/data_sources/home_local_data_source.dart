@@ -4,7 +4,7 @@ import 'package:news_app/features/news/domain/entities/news_entity.dart';
 
 abstract class HomeLocalDataSource {
   List<NewsEntity> fetchAllNews({int pageNumber = 0});
-  List<NewsEntity> fetchNewsWithCategory({required String category});
+  List<NewsEntity> fetchNewsWithCategory({required String category , int pageNumber = 0});
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {

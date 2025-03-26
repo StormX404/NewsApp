@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/sizes.dart';
 
-
 class CircularIcon extends StatelessWidget {
   const CircularIcon({
     super.key,
-    this.width,
-    this.height,
+    this.width = 40 ,
+    this.height = 40 ,
     this.size = AppSizes.lg,
     required this.icon,
     this.color,
@@ -15,7 +14,7 @@ class CircularIcon extends StatelessWidget {
     this.onPressed,
   });
 
-  final double? width, height, size;
+  final double width, height, size;
   final IconData icon;
   final Color? color, backgroundColor;
   final VoidCallback? onPressed;

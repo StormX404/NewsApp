@@ -32,7 +32,7 @@ class FavoritesScreens extends StatelessWidget {
             Text(
               'No favorites yet',
               style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,  
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Padding(
@@ -49,5 +49,6 @@ class FavoritesScreens extends StatelessWidget {
         ),
       ),
     );
+
   }
 }

@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/features/news/screens/favorites/favorites_screens.dart';
-import 'package:news_app/features/news/screens/home/home_screen.dart';
-import 'package:news_app/features/news/screens/search/search_screen.dart';
+import 'package:news_app/features/news/screens/home/views/home_screen.dart';
+import 'package:news_app/features/news/screens/search/views/search_screen.dart';
 
 class NavigationCubit extends Cubit<int> {
   NavigationCubit() : super(0);
@@ -45,7 +45,7 @@ class NavigationMenu extends StatelessWidget {
                 children: [
                   ClipRRect(
                     child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 40),
                       child: Container(
                         height: 80,
                         decoration: BoxDecoration(

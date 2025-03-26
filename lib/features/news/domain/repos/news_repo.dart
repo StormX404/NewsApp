@@ -6,7 +6,10 @@ abstract class NewsRepo {
   Future<Either<Failure, List<NewsEntity>>> fetchAllNews({int pageNumber = 0});
 
   Future<Either<Failure, List<NewsEntity>>> fetchNewsWithCategory(
-      {String category = 'general' , int pageNumber = 0});
+      {required String category, int pageNumber = 0});
+
+  Future<Either<Failure, List<NewsEntity>>> searchNews(
+      {required String query});
 
   Future<Either<Failure, void>> speak(String text);
   Future<Either<Failure, void>> stop();
