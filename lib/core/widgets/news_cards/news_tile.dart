@@ -1,15 +1,17 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
+import 'package:news_app/core/utils/constants/sizes.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsTile extends StatelessWidget {
   const NewsTile(
       {super.key,
-      required this.imageUrl,
-      required this.title,
-      required this.time,
-      required this.author,
-      required this.ontap});
+        required this.imageUrl,
+        required this.title,
+        required this.time,
+        required this.author,
+        required this.ontap});
 
   final String imageUrl;
   final String title;
@@ -26,51 +28,72 @@ class NewsTile extends StatelessWidget {
     return InkWell(
       onTap: ontap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 15 , right: 15 ),
+        margin: const EdgeInsets.only(bottom: 15, right: 15),
         decoration: BoxDecoration(
-            color: dark ? AppColors.darkCardColor : AppColors.lightCardColor,
-            borderRadius: BorderRadius.circular(20)),
-        child: Row(
-          children: [
-            Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  imageUrl,
-                  fit: BoxFit.cover,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            children: [
+              // Blurred Background
+              ImageFiltered(
+                imageFilter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: dark
+                        ? AppColors.darkCardColor.withOpacity(0.6)
+                        : AppColors.lightCardColor.withOpacity(0.4),
+                  ),
+                  width: double.infinity,
+                  height: 120,
                 ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(
                 children: [
-                  Text(
-                    author,
-                    maxLines: 1,
+                  Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 15),
-                  Text(
-                    title,
-                    maxLines: 2,
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    timeAgo,
-                    style: Theme.of(context).textTheme.labelSmall,
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          author,
+                          maxLines: 1,
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        const SizedBox(height: AppSizes.sm),
+                        Text(
+                          title,
+                          maxLines: 2,
+                        ),
+                        const SizedBox(height: AppSizes.sm),
+                        Text(
+                          timeAgo,
+                          style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.grey),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/image_strings.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
 import 'package:news_app/core/app_manager/theme_cubit/theme_cubit.dart';
@@ -29,7 +28,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Container(color: Colors.transparent),
           ),
         ),
-        backgroundColor: dark ? AppColors.dark : AppColors.light,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         automaticallyImplyLeading: false,
         title: const Row(

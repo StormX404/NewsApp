@@ -45,7 +45,7 @@ class NavigationMenu extends StatelessWidget {
                 children: [
                   ClipRRect(
                     child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 40),
                       child: Container(
                         height: 80,
                         decoration: BoxDecoration(
