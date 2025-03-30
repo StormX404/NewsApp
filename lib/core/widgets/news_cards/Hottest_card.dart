@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/device/device_utility.dart';
 import 'package:news_app/core/widgets/icon/favorite_icon.dart';
+import 'package:news_app/features/news/domain/entities/news_entity.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class HottestCard extends StatelessWidget {
@@ -11,7 +12,7 @@ class HottestCard extends StatelessWidget {
     required this.time,
     required this.title,
     required this.author,
-    required this.onTap,
+    required this.onTap, required this.news,
   });
 
   final String imageUrl;
@@ -19,6 +20,8 @@ class HottestCard extends StatelessWidget {
   final String title;
   final String author;
   final VoidCallback onTap;
+  final NewsEntity news;
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +68,10 @@ class HottestCard extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(
+          Positioned(
             top: 12,
             right: 15,
-            child: FavoriteIcon(),
+            child: FavoriteIcon(news: news,),
           ),
           Positioned(
             bottom: 20,
@@ -77,16 +80,7 @@ class HottestCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                Text(title, style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold,), maxLines: 2, overflow: TextOverflow.ellipsis,),
                 const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -18,7 +18,7 @@ class DetailsCubit extends Cubit<DetailsState> {
     }, (_) {
       emit(DetailsSpeaking());
 
-      Future.delayed(Duration(seconds: text.split(" ").length ~/ 2), () {
+      Future.delayed(Duration(seconds: text.split(' ').length ~/ 2), () {
         emit(DetailsStopped());
       });
     });

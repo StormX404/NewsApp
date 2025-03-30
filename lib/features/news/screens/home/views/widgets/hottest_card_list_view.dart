@@ -21,6 +21,7 @@ class HottestCardListView extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: HottestCard(
+              news: newsItem,
               imageUrl: newsItem.urlToImage?.isNotEmpty == true ? newsItem.urlToImage! : 'assets/images/placeholder.png',
               time: newsItem.publishedAt ?? 'Unknown',
               title: newsItem.title,

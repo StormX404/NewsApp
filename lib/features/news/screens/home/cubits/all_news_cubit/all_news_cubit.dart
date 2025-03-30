@@ -21,4 +21,5 @@ class AllNewsCubit extends Cubit<AllNewsState> {
       emit(AllNewsSuccess(news));
     });
   }
+
 }

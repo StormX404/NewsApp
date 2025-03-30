@@ -1,8 +1,5 @@
 import 'dart:ui';
-<<<<<<< HEAD
 import 'package:cached_network_image/cached_network_image.dart';
-=======
->>>>>>> origin/main
 import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
 import 'package:news_app/core/utils/constants/sizes.dart';
@@ -64,7 +61,6 @@ class NewsTile extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-<<<<<<< HEAD
                       child: CachedNetworkImage(
                         imageUrl: imageUrl,
                         fit: BoxFit.cover,
@@ -76,12 +72,6 @@ class NewsTile extends StatelessWidget {
                         ),
                       ),
 
-=======
-                      child: Image.asset(
-                        imageUrl,
-                        fit: BoxFit.cover,
-                      ),
->>>>>>> origin/main
                     ),
                   ),
                   const SizedBox(width: 10),

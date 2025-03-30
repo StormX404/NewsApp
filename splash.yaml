@@ -5,6 +5,8 @@ flutter_native_splash:
   image_dark: assets/logos/light_logo.png
   android: true
   ios: true
+  minSplashScreenDuration: 3000
+
 
   android_12:
     color: "#FFFFFF"
@@ -13,6 +15,7 @@ flutter_native_splash:
     image_dark: assets/logos/light_logo.png
     android: true
     ios: true
+    minSplashScreenDuration: 3000
 
 
   web: false

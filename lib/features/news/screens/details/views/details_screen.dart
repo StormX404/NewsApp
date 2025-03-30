@@ -37,7 +37,7 @@ class DetailsScreen extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  RoundedImageWithTopBar(borderRadius: borderRadius, screenHeight: screenHeight, image: news.urlToImage!,),
+                  RoundedImageWithTopBar(borderRadius: borderRadius, screenHeight: screenHeight, image: news.urlToImage!, news: news),
                   const SizedBox(height: AppSizes.spaceBtwItems),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),

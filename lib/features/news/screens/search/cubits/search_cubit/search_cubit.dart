@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:news_app/features/news/domain/entities/news_entity.dart';
@@ -11,8 +12,14 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.newsRepository) : super(SearchInitial());
 
   final NewsRepo newsRepository;
+  final TextEditingController searchController = TextEditingController();
 
   Future<void> searchNews(String query) async {
+    if (query.isEmpty) {
+      emit(SearchInitial());
+      return;
+    }
+
     print('Cubit: Searching for $query');
     emit(SearchLoading());
 
@@ -30,5 +37,5 @@ class SearchCubit extends Cubit<SearchState> {
       },
     );
   }
-
 }
+

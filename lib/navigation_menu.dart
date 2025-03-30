@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:news_app/core/utils/constants/app_colors.dart';
-import 'package:news_app/features/news/screens/favorites/favorites_screens.dart';
+import 'package:news_app/features/news/screens/favorites/views/favorites_screen.dart';
 import 'package:news_app/features/news/screens/home/views/home_screen.dart';
 import 'package:news_app/features/news/screens/search/views/search_screen.dart';
 
@@ -13,7 +13,7 @@ class NavigationCubit extends Cubit<int> {
   final List<Widget> screens = [
     const HomeScreen(),
     const SearchScreen(),
-    const FavoritesScreens(),
+    const FavoritesScreen(),
   ];
 
   void changeTab(int index) {
@@ -23,21 +23,23 @@ class NavigationCubit extends Cubit<int> {
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key, this.index = 0});
+
   final int index;
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
-      create: (context) => NavigationCubit()..emit(index), // Initialize index
+      create: (context) => NavigationCubit()..emit(index),
       child: BlocBuilder<NavigationCubit, int>(
         builder: (context, state) {
           return WillPopScope(
             onWillPop: () async {
               if (state != 0) {
                 context.read<NavigationCubit>().changeTab(0);
-                return false; 
+                return false;
               }
-              return true; 
+              return true;
             },
             child: Scaffold(
               body: context.read<NavigationCubit>().screens[state],
@@ -50,7 +52,8 @@ class NavigationMenu extends StatelessWidget {
                         height: 80,
                         decoration: BoxDecoration(
                           border: Border(
-                            top: BorderSide(color: Colors.grey.withOpacity(0.3)),
+                            top:
+                                BorderSide(color: Colors.grey.withOpacity(0.3)),
                           ),
                         ),
                       ),

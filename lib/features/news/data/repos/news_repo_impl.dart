@@ -31,7 +31,7 @@ class NewsRepoImpl extends NewsRepo {
 
       return right(remoteNews);
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
         // If there's no internet connection, return cached data
         var cachedNews = homeLocalDataSource.fetchAllNews(pageNumber: pageNumber);
         if (cachedNews.isNotEmpty) {
@@ -56,7 +56,7 @@ class NewsRepoImpl extends NewsRepo {
 
       return right(remoteNews);
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
         // If there's no internet connection, return cached data
         var cachedNews = homeLocalDataSource.fetchNewsWithCategory(category: category, pageNumber: pageNumber);
         if (cachedNews.isNotEmpty) {

@@ -14,4 +14,8 @@ class AppImages{
   static const String favoriteAnimation = 'assets/images/animations/fav_animation.json';
   static const String favoriteAnimationDark = 'assets/images/animations/fav_animation_dark.json';
 
+  // -- Search animations
+  static const String searchAnimation = 'assets/images/animations/light_search.json';
+  static const String searchAnimationDark = 'assets/images/animations/dark_search.json';
+
 }

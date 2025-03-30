@@ -15,12 +15,10 @@ class CustomSearchContainer extends StatefulWidget {
 }
 
 class _CustomSearchContainerState extends State<CustomSearchContainer> {
-  final TextEditingController _searchController = TextEditingController();
   Timer? _debounce;
 
   @override
   void dispose() {
-    _searchController.dispose();
     _debounce?.cancel();
     super.dispose();
   }
@@ -29,16 +27,20 @@ class _CustomSearchContainerState extends State<CustomSearchContainer> {
     if (_debounce?.isActive ?? false) _debounce!.cancel();
 
     _debounce = Timer(const Duration(milliseconds: 500), () {
-      if (query.length >= 3) {
+      if (query.isEmpty) {
+        context.read<SearchCubit>().emit(SearchInitial());
+      } else if (query.length >= 3) {
         context.read<SearchCubit>().searchNews(query);
       }
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
+    final searchCubit = context.read<SearchCubit>();
     return TextField(
-      controller: _searchController,
+      controller: searchCubit.searchController,
       cursorColor: AppColors.primary,
       decoration: InputDecoration(
         hintText: widget.hintText,
